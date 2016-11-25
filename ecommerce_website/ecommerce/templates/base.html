@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ショッピングサイト</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <a href="../list/">商品一覧</a>
+    <a href="../cart_list/">カートの中身を表示</a>
+    <a href="../cart_reset/">カートを空にする</a>
+    <a href="../order/">注文する</a>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>
