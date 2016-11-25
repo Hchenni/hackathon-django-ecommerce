@@ -7,7 +7,7 @@
   <section class="list">
     {% for product in products %}
       <div class="item">
-        <h1>{{ product.name }}</h1>
+        <h1><a href="../product/{{ product.id }}">{{ product.name }}</a></h1>
         <img src="../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
         <a href="../cart_add/{{ product.id }}" class="btn-cart">カートに入れる</a>
       </div>
