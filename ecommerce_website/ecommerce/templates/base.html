@@ -9,11 +9,19 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
   <body>
-    <a href="../list/">商品一覧</a>
-    <a href="../cart_list/">カートの中身を表示</a>
-    <a href="../cart_reset/">カートを空にする</a>
-    <a href="../order/">注文する</a>
+    <header>
+      <ul>
+        <li><img src="/media/logo.svg" alt="" width="150" /></li>
+        <li><a href="../list/">商品一覧</a></li>
+        <li><a href="../cart_list/">カートの中身を表示</a></li>
+        <li><a href="../cart_reset/">カートを空にする</a></li>
+        <li><a href="../order/">注文する</a></li>
+      </ul>
+    </header>
     {% block content %}
     {% endblock %}
+    <footer>
+      ©orcart 2016
+    </footer>
   </body>
 </html>
