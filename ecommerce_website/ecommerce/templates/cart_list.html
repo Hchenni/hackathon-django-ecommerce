@@ -5,12 +5,16 @@
           <th>商品番号</th>
           <th>商品名</th>
           <th>価格</th>
+          <th>操作</th>
       </tr>
   {% for product in products %}
       <tr>
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.price }}</td>
+          <td>
+	      <a href="../cart_delete/{{ product.id }}">削除</a>
+          </td>
       </tr>
   {% endfor %}
       <tr>
