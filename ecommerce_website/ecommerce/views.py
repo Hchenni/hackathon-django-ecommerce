@@ -60,7 +60,9 @@ def cart_delete(request, product_id):
 
     if not request.session.has_key('number'):
         request.session['number'] = {}
-    del request.session['number'][str(product_id)]
+
+    if str(product_id) in request.session['number']:
+        del request.session['number'][str(product_id)]
 
     #   同じ商品が複数listに入っていた場合に、指定されてIDのオブジェクトをすべて削除する
     cart = [item for item in cart if item is not str(product_id)]
