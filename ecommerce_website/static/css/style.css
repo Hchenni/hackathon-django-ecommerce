@@ -1,3 +1,11 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+main {
+  flex: 1;
+}
 header {
   height: 55px;
   line-height: 55px;
@@ -23,22 +31,27 @@ header a {
   margin-top: 50px;
   margin-bottom: 50px;
   text-align: center;
+  font-size: 34px;
 }
 section.list {
   width: 792px;
   overflow: hidden;
   margin: 0 auto;
+  margin-bottom: 55px;
 }
 
 #visual {
-  background: #eee;
-  height: 100px;
+  background: url('/media/visual.jpg') #84c7ff center -1630px;
+  background-size: 1920px;
+  height: 233px;
+  text-align: center;
+  padding-top: 23px;
 }
 
 
 .item {
   padding: 21px;
-  background: #efefef;
+  background: #f3f3f3;
   border-radius: 8px;
   width: 250px;
   text-align: center;
