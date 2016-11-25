@@ -98,8 +98,15 @@ def cart_list(request):
 
     #   カートに入っている商品の情報を取得します
     products = Product.objects.filter(id__in=cart)
+    total = 0
 
-    return render(request, 'cart_list.html', {'products': products})
+    for i in products:
+        total+=i.price
+
+    return render(request, 'cart_list.html', {
+      'products': products,
+      'total': total
+    })
 
 def order(request):
     """
