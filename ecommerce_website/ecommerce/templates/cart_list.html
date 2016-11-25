@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-  <table>
+  <table class="cart">
       <tr>
           <th>商品番号</th>
           <th>商品名</th>
@@ -11,15 +11,21 @@
       <tr>
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
+          <td>￥{{ product.price }}</td>
           <td>
 	      <a href="../cart_delete/{{ product.id }}">削除</a>
           </td>
       </tr>
   {% endfor %}
       <tr>
-          <td colspan="2">合計</td>
-          <td colspan="2">{{ total }}</td>
+          <td>
+
+          </td>
+          <td>合計</td>
+          <td>￥{{ total }}</td>
+          <td>
+
+          </td>
       </tr>
   </table>
 {% endblock content %}
