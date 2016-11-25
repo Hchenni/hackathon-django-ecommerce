@@ -1,7 +1,12 @@
-korega product
-{{ product.name }}
-{{ product.category }}
-{{ product.spec }}
-{{ product.description }}
-{{ product.price }}
-<img src="../../../media/{{ product.image }}" alt="" width="200" height="200" border="0" />
+{% extends 'base.html' %}
+{% block content %}
+<div style="text-align:center;margin-top:55px;"><img src="../../../media/{{ product.image }}" alt="" width="200" height="200" border="0" /></div>
+<div style="text-align:center;margin-top:21px;">
+  korega product
+  {{ product.name }}
+  {{ product.category }}
+  {{ product.spec }}
+  <span style="display:block;margin-bottom:21px;margin-top:5px;">{{ product.description }}</span>
+  {{ product.price }}円
+  {% endblock content %}
+</div>

@@ -15,6 +15,7 @@ header ul {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 }
 header ul li {
   margin-left: 21px;
@@ -22,7 +23,7 @@ header ul li {
 }
 header ul li:first-of-type {
   margin-left: 0;
-  margin-right: 170px;
+  margin-right: 206px;
 }
 header a {
   color: #aaa;
@@ -79,6 +80,10 @@ section.list {
   line-height: 34px;
   margin-top: 21px;
 }
+.item .btn-cart:hover {
+  text-decoration: none;
+  background: #81d011;
+}
 
 footer {
   height: 55px;
@@ -86,4 +91,71 @@ footer {
   text-align: center;
   background: #000;
   color: #aaa;
+}
+
+.cart {
+  background: #f5f5f5;
+  width: 700px;
+  margin: 55px auto;
+  border-radius: 8px;
+}
+.cart tr {
+  height: 55px;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0px 2px 0 0px #fff;
+}
+.cart tr:last-of-type {
+  border: none;
+}
+.cart th {
+  text-align: center;
+}
+.cart td {
+  text-align: center;
+
+}
+.cart th:nth-of-type(2) {
+  text-align: left;
+}
+.cart td:nth-of-type(2) {
+  text-align: left;
+}
+
+input {
+  height: 34px;
+  border-radius: 5px;
+  border: 1px solid #c3dae2;
+}
+.name1,.name2 {
+  width: 225px;
+  margin-left: 8px;
+}
+.name1 {
+  margin-right: 21px;
+}
+.cart.adjust {
+  background:#e3f0f5;
+}
+.cart.adjust tr {
+  border-bottom: 1px solid #c3dae2;
+}
+.cart.adjust td:first-of-type {
+  text-align: left;
+}
+.full {
+  width: 95%;
+}
+.btn-order {
+  width: 337px;
+  border: none;
+  height: 55px;
+  margin: 0 auto 55px auto;
+  display: block;
+  background: #7bc80d;
+  color: #fff;
+  font-size: 16px
+}
+.btn-order:hover {
+  background: #81d011;
 }
