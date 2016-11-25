@@ -57,6 +57,11 @@ def cart_delete(request, product_id):
     if not request.session.has_key('cart'):
         request.session['cart'] = list()
     cart = request.session['cart']
+
+    if not request.session.has_key('number'):
+        request.session['number'] = {}
+    del request.session['number'][str(product_id)]
+
     #   同じ商品が複数listに入っていた場合に、指定されてIDのオブジェクトをすべて削除する
     cart = [item for item in cart if item is not str(product_id)]
     request.session['cart'] = cart
@@ -79,6 +84,10 @@ def cart_reset(request):
         request.session['cart'] = list()
     del request.session['cart']
 
+    if not request.session.has_key('number'):
+        request.session['number'] = {}
+    del request.session['number']
+
     products = get_list_or_404(Product)
 
     response = redirect('/ec/list/', {'products': products})
@@ -96,18 +105,46 @@ def cart_list(request):
         request.session['cart'] = list()
     cart = request.session['cart']
 
+    #   カート(セッション)内にある商品の数を取得します。
+    if not request.session.has_key('number'):
+        request.session['number'] = {}
+    number = request.session['number']
+
     #   カートに入っている商品の情報を取得します
     products = Product.objects.filter(id__in=cart)
 
     #   合計金額を計算します。
     total = 0
     for i in products:
-        total += i.price
+        key = str(i.id)
+        i.number = 1
+        if key in number:
+           i.number = int(number[key])
+        i.total = i.number * i.price
+        total += i.total
 
     return render(request, 'cart_list.html', {
       'products': products,
       'total': total
     })
+
+def cart_change(request, product_id, change_number):
+    """
+    商品の購入数が変更する場合の処理。
+    """
+
+    #   カート(セッション)内にある商品の数を取得します。
+    if not request.session.has_key('number'):
+        request.session['number'] = {}
+    number = request.session['number']
+
+    number[product_id] = change_number
+
+    request.session['number'] = number
+
+    response = redirect('/ec/cart_list/')
+
+    return response
 
 def order(request):
     """
@@ -120,6 +157,11 @@ def order(request):
         request.session['cart'] = list()
     cart = request.session['cart']
 
+    #   カート(セッション)内にある商品の数を取得します。
+    if not request.session.has_key('number'):
+        request.session['number'] = {}
+    number = request.session['number']
+
     #   カートに入っている商品の情報を取得します
     products = Product.objects.filter(id__in=cart)
 
@@ -129,7 +171,12 @@ def order(request):
     #   合計金額を計算します。
     total = 0
     for i in products:
-        total += i.price
+        key = str(i.id)
+        i.number = 1
+        if key in number:
+           i.number = int(number[key])
+        i.total = i.number * i.price
+        total += i.total
 
     return render(request, 'order.html', {
       'products': products,
@@ -188,4 +235,3 @@ def order_complete(request):
     #   カートの中身を削除します
     if request.session.has_key('cart'):
         del request.session['cart']
-    return response

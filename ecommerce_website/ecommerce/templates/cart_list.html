@@ -4,28 +4,37 @@
       <tr>
           <th>商品番号</th>
           <th>商品名</th>
-          <th>価格</th>
+          <th>個数</th>
+          <th>単価</th>
+          <th>小計</th>
           <th>操作</th>
       </tr>
   {% for product in products %}
       <tr>
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
+          <td>
+              <select onchange="window.location.href = '../cart_change/{{ product.id }}/' + this.value;">
+                  {% for num in "xxxxxxxxxxxxxxx" %}
+                      {% if forloop.counter == product.number %}
+                          <option selected>{{ forloop.counter }}</option>
+                      {% else %}
+                          <option>{{ forloop.counter }}</option>
+                      {% endif %}
+                  {% endfor %}
+              </select>
+          </td>
           <td>￥{{ product.price }}</td>
+          <td>￥{{ product.total }}</td>
           <td>
 	      <a href="../cart_delete/{{ product.id }}">削除</a>
           </td>
       </tr>
   {% endfor %}
       <tr>
-          <td>
-
-          </td>
-          <td>合計</td>
-          <td>￥{{ total }}</td>
-          <td>
-
-          </td>
+          <td colspan="2"></td>
+          <th colspan="2">合計</th>
+          <th colspan="2">￥{{ total }}</th>
       </tr>
   </table>
 {% endblock content %}
