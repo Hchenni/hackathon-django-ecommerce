@@ -65,8 +65,10 @@
           <th>決済方法</th>
           <td>
           {% for payment in payments %}
-              <input type="radio" name="payment" id="payment_name" value="{{ payment.id }}" style="vertical-align: middle; margin-right: 5px;" />
-              <label for="payment_name" style="margin-right: 21px">{{ payment.name }}</label>
+              <label style="margin-right: 21px">
+                  <input type="radio" name="payment" value="{{ payment.id }}" style="vertical-align: middle; margin-right: 5px;" />
+                  {{ payment.name }}
+              </label>
           {% endfor %}
           </td>
       </tr>
