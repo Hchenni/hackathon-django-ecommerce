@@ -235,3 +235,8 @@ def order_complete(request):
     #   カートの中身を削除します
     if request.session.has_key('cart'):
         del request.session['cart']
+
+    if request.session.has_key('number'):
+        del request.session['number']
+
+    return response
