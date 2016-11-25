@@ -98,10 +98,11 @@ def cart_list(request):
 
     #   カートに入っている商品の情報を取得します
     products = Product.objects.filter(id__in=cart)
-    total = 0
 
+    #   合計金額を計算します。
+    total = 0
     for i in products:
-        total+=i.price
+        total += i.price
 
     return render(request, 'cart_list.html', {
       'products': products,
@@ -125,7 +126,16 @@ def order(request):
     #   決済方法を取得します。
     payments = get_list_or_404(Payment)
 
-    return render(request, 'order.html', {'products': products, 'payments': payments})
+    #   合計金額を計算します。
+    total = 0
+    for i in products:
+        total += i.price
+
+    return render(request, 'order.html', {
+      'products': products,
+      'payments': payments,
+      'total': total
+    })
 
 def order_execute(request):
     """
