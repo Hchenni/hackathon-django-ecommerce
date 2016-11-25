@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^ec/cart_delete/(?P<product_id>[0-9]+)/', views.cart_delete),
     url(r'^ec/cart_reset/', views.cart_reset),
     url(r'^ec/cart_list/', views.cart_list),
+    url(r'^ec/cart_change/(?P<product_id>[0-9]+)/(?P<change_number>[0-9]+)', views.cart_change),
     url(r'^ec/order/', views.order),
     url(r'^ec/order_execute/', views.order_execute),
     url(r'^ec/order_complete/', views.order_complete)

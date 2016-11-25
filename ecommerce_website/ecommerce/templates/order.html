@@ -5,18 +5,22 @@
       <tr>
           <th>商品番号</th>
           <th>商品名</th>
-          <th>価格</th>
+          <th>個数</th>
+          <th>単価</th>
+          <th>小計</th>
       </tr>
   {% for product in products %}
       <tr>
           <td>{{ product.id }}</td>
           <td>{{ product.name }}</td>
+          <td>{{ product.number }}</td>
           <td>{{ product.price }}</td>
+          <td>{{ product.total }}</td>
       </tr>
   {% endfor %}
       <tr>
-          <td>合計</td>
-          <td></td>
+          <td colspan="2"></td>
+          <td colspan="2">合計</td>
           <td>{{ total }}</td>
       </tr>
   </table>
